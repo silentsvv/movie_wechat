@@ -1,0 +1,81 @@
+<!--index.wxml-->
+<view class="index">
+  <view class="index__swiper">
+    <image class="swiper" src="../../images/movie_big.png"></image>
+  </view>
+  <view class="index__ad">
+    <view class="ad__left">最新动态</view>
+    <view class="ad__right">
+      <text>测试轮播图</text>
+    </view>
+  </view>
+
+  <view class="index__content">
+    <scroll-view class="content__tap"  scroll-x="true">
+      <view class="tap active">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+      <view class="tap">全部</view>
+    </scroll-view>
+
+    <view class="content__shop">
+      <view class="shop">
+        <view class="shop__img">
+          <image src="../../images/shop.png"></image>
+        </view>
+        <view class="shop__info">
+          <view class="shop__info__title">
+            Apple Iphone X 64GB深灰空 移动互联电信4g手机
+          </view>
+          <view class="shop__info__price">面值<text class="num">50</text>元</view>
+        </view>
+        <view class="shop__btn">领取</view>
+      </view>
+
+      <view class="shop">
+        <view class="shop__img">
+          <image src="../../images/shop.png"></image>
+        </view>
+        <view class="shop__info">
+          <view class="shop__info__title">
+            Apple Iphone X 64GB深灰空 移动互联电信4g手机
+          </view>
+          <view class="shop__info__price">面值<text class="num">50</text>元</view>
+        </view>
+        <view class="shop__btn">领取</view>
+      </view>
+
+      <view class="shop">
+        <view class="shop__img">
+          <image src="../../images/shop.png"></image>
+        </view>
+        <view class="shop__info">
+          <view class="shop__info__title">
+            Apple Iphone X 64GB深灰空 移动互联电信4g手机
+          </view>
+          <view class="shop__info__price">面值<text class="num">50</text>元</view>
+        </view>
+        <view class="shop__btn">领取</view>
+      </view>
+      
+      <view class="shop">
+        <view class="shop__img">
+          <image src="../../images/shop.png"></image>
+        </view>
+        <view class="shop__info">
+          <view class="shop__info__title">
+            Apple Iphone X 64GB深灰空 移动互联电信4g手机
+          </view>
+          <view class="shop__info__price">面值<text class="num">50</text>元</view>
+        </view>
+        <view class="shop__btn">领取</view>
+      </view>
+    </view>
+  </view>
+</view>

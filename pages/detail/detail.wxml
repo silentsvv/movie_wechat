@@ -1,0 +1,52 @@
+<!--pages/detail/detail.wxml-->
+<view class="detail">
+  <view class="detail__image">
+    <image src="../../images/goods.png"></image>
+  </view>
+  <view class="detail__info">
+    <view class="info__title">Apple Iphone X 64GB深灰空 移动互联电信4g手机</view>
+    <view class="info__price">
+      <text class="price">2500</text>
+      <text class="text">积分+199元</text>
+    </view>
+    <view class="info__mes">
+      <text class="mes__market">市场参考价：599元</text>
+      <text class="mes__date">有效期2017.12.31</text>
+    </view>
+  </view>
+
+  <view class="detail__intro">
+    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
+    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
+    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
+    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
+  </view>
+
+  <view class="detail__merchant">
+    <view class="merchant__title border-bottom">适用门店</view>
+    <view class="merchant__content border-bottom">
+      <view class="content__left">
+        <view class="left__title">飞扬影城(高德置地)</view>
+        <view class="left__address">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+      </view>
+      <view class="content__right">
+        <image src="../../images/telephone.png"></image>
+      </view>
+    </view>
+    <view class="content__total">查看全部门店</view>
+  </view>
+
+  <view class="detail__seller">
+    <view class="seller__title border-bottom">门店说明</view>
+    <view class="seller__content">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+  </view>
+
+  <view class="detail__user">
+    <view class="user__title border-bottom">使用说明</view>
+    <view class="user__content">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+  </view>
+
+  <view class="detail__bottom">
+    <view class="bottom__title">点击查看图文详情</view>
+  </view>
+</view>

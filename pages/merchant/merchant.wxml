@@ -1,0 +1,32 @@
+<!--pages/merchant/merchant.wxml-->
+<view class="merchant__list">
+  <view class="merchant border-bottom">
+    <view class="content__left">
+      <view class="left__title">飞扬影城(高德置地)</view>
+      <view class="left__address">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+    </view>
+    <view class="content__right">
+      <image src="../../images/telephone.png"></image>
+    </view>
+  </view>
+
+  <view class="merchant border-bottom">
+    <view class="content__left">
+      <view class="left__title">飞扬影城(高德置地)</view>
+      <view class="left__address">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+    </view>
+    <view class="content__right">
+      <image src="../../images/telephone.png"></image>
+    </view>
+  </view>
+
+  <view class="merchant border-bottom">
+    <view class="content__left">
+      <view class="left__title">飞扬影城(高德置地)</view>
+      <view class="left__address">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+    </view>
+    <view class="content__right">
+      <image src="../../images/telephone.png"></image>
+    </view>
+  </view>
+</view>
