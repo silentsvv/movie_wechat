@@ -4,22 +4,27 @@
   background: #f6f6f6;
 }
 
-.merchant {
+.merchant__content {
   position: relative;
   padding: 20rpx 0;
   display: flex;
-  align-items: center;
-  background: #fff;
+  align-items: center; 
+  background: #FFF;
 }
 
-.merchant .content__left .left__title {
+.merchant__content .content__left {
+  width: 686rpx;
+}
+
+.merchant__content .content__left .left__title {
   padding-left: 30rpx;
   padding-bottom: 6rpx; 
   font-size: 29rpx;
   font-weight: 600;
 }
 
-.merchant .content__left .left__address {
+.merchant__content .content__left .left__address {
+  width: 580rpx;
   padding-left: 30rpx;
   font-size: 24rpx;
   color: #999;
@@ -28,9 +33,16 @@
 .content__right {
   padding: 0 30rpx;
   border-left: 1rpx solid #eee;
+  overflow: hidden;
 }
 
 .content__right image {
   width: 60rpx;
   height: 60rpx;
+}
+
+.content__total {
+  padding: 20rpx 30rpx;
+  font-size: 29rpx;
+  color: #00adf1;
 }

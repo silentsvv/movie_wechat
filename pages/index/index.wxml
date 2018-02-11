@@ -1,31 +1,39 @@
 <!--index.wxml-->
 <view class="index">
-  <view class="index__swiper">
-    <image class="swiper" src="../../images/movie_big.png"></image>
-  </view>
+  <swiper class="index__swiper" indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{ImgUrl + item.imagePath}}" class="slide-image" width="355" height="150"/>
+      </swiper-item>
+    </block>
+  </swiper>
   <view class="index__ad">
     <view class="ad__left">最新动态</view>
-    <view class="ad__right">
-      <text>测试轮播图</text>
-    </view>
+    <swiper class="ad__right" 
+      indicator-dots="{{false}}"
+      autoplay="{{true}}" 
+      vertical="1" 
+      interval="{{2000}}"
+      circular="1"
+      duration="{{1000}}">
+      <block wx:for="{{newsList}}">
+        <swiper-item>
+          <view class="ad__right__new">{{item[0].title}}</view>
+          <view class="ad__right__new">{{item[1].title}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="ad__bg" style="background-image: url({{ImgUrl + backgroundImg}})"></view>
   </view>
 
   <view class="index__content">
-    <scroll-view class="content__tap"  scroll-x="true">
-      <view class="tap active">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
-      <view class="tap">全部</view>
+    <scroll-view class="content__tap" scroll-x="true">
+      <view class="tap {{categoryActive == index?'active':''}}" data-id="{{item.id}}" data-idx="{{index}}" wx:for="{{categoryList}}" bindtap="changeCategory">{{item.name}}</view>
     </scroll-view>
 
     <view class="content__shop">
-      <view class="shop">
+      <!-- <view class="shop">
         <view class="shop__img">
           <image src="../../images/shop.png"></image>
         </view>
@@ -36,45 +44,22 @@
           <view class="shop__info__price">面值<text class="num">50</text>元</view>
         </view>
         <view class="shop__btn">领取</view>
-      </view>
+      </view> -->
 
-      <view class="shop">
-        <view class="shop__img">
-          <image src="../../images/shop.png"></image>
+      <view class="shop" wx:for="{{couponsList}}" data-id="{{item.id}}" bindtap="linkToCoupon">
+        <view class="shop__img" >
+          <image src="{{ImgUrl + item.imagePath}}"></image>
         </view>
         <view class="shop__info">
           <view class="shop__info__title">
-            Apple Iphone X 64GB深灰空 移动互联电信4g手机
+            {{item.name}}
           </view>
-          <view class="shop__info__price">面值<text class="num">50</text>元</view>
+          <view class="shop__info__price" wx:if="{{item.type == 1 || item.type == 3}}">面值<text class="num">{{item.price}}</text>元</view>
+          <view class="shop__info__price" wx:if="{{item.type == 2}}"><text class="num">{{item.integral}}</text>积分</view>
+          <view class="shop__info__price" wx:if="{{item.type == 4}}"><text class="num">{{item.integral}}</text>积分 + {{item.price}}元</view>
+          <view class="shop__info__origin" wx:if="{{item.type == 2 || item.type == 4}}">原价: {{item.marketPrice}}元</view>
         </view>
-        <view class="shop__btn">领取</view>
-      </view>
-
-      <view class="shop">
-        <view class="shop__img">
-          <image src="../../images/shop.png"></image>
-        </view>
-        <view class="shop__info">
-          <view class="shop__info__title">
-            Apple Iphone X 64GB深灰空 移动互联电信4g手机
-          </view>
-          <view class="shop__info__price">面值<text class="num">50</text>元</view>
-        </view>
-        <view class="shop__btn">领取</view>
-      </view>
-      
-      <view class="shop">
-        <view class="shop__img">
-          <image src="../../images/shop.png"></image>
-        </view>
-        <view class="shop__info">
-          <view class="shop__info__title">
-            Apple Iphone X 64GB深灰空 移动互联电信4g手机
-          </view>
-          <view class="shop__info__price">面值<text class="num">50</text>元</view>
-        </view>
-        <view class="shop__btn">领取</view>
+        <!-- <view class="shop__btn">领取</view> -->
       </view>
     </view>
   </view>

@@ -1,54 +1,118 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const Api = require('../../Api/Api');
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    ImgUrl: Api.getImgUrl(),
+    categoryActive: 0,
+    categoryList: [],
+    couponsList: [],  //卡券列表
+    imgUrls: [],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    newsList: [],
+    backgroundImg: '',
+    isOpen: ''
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  onLoad: function () {
+    this.getCategoryList();
+    this.getAdList();
+    this.getNews();
+  },
+
+  //获取分类列表
+  getCategoryList() {
+    Api.getCategoryList().then((res) => {
+      console.log(res)
+      if(res.data.q.s == 0) {
+        this.setData({
+          categoryList: res.data.q.categorys
+        })
+        if(res.data.q.categorys[0]) {
+          let id = res.data.q.categorys[0].id;
+          this.getCouponList(id);
+        }
+      }
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+
+  //点击切换分类
+  changeCategory(event) {
+    let index = event.currentTarget.dataset.idx;
+    let id = event.currentTarget.dataset.id;
+    this.getCouponList(id);
+    this.setData({
+      categoryActive: index
+    })
+  },
+
+  //获取卡券列表
+  getCouponList(categoryId) {
+    Api.getCouponList({a:1, categoryId}).then((res) => {
+      console.log(res);
+      if(res.data.q.s == 0) {
+        let coupons = res.data.q.coupons;
+        for(let i = 0, len = coupons.length; i < len; i++) {
+          coupons[i].integral = parseFloat(coupons[i].integral);
+          coupons[i].price = parseFloat(coupons[i].price);
+          coupons[i].marketPrice = parseFloat(coupons[i].marketPrice);
+        }
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          couponsList: coupons
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    })
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+
+  //获取轮播图
+  getAdList() {
+    Api.getAdList().then((res) => {
+      console.log(res);
+      if(res.data.q.s == 0) {
+        this.setData({
+          imgUrls: res.data.q.ads
+        })
+      }
+    })
+  },
+
+  //获取广播
+  getNews() {
+    Api.getNews().then((res) => {
+      console.log(res);
+      if(res.data.q.s == 0) {
+        let lists = res.data.q.news.lists;
+        let backgroundImg = res.data.q.news.imagePath;
+        let isOpen = res.data.q.news.isOpen;
+        let newList = [];
+        let len = Math.round(lists.length / 2);
+        for(let i = 0; i < len; i++) {
+          newList[i] = [];
+          newList[i].push(lists[i * 2]);
+          if(lists[i * 2 + 1]) {
+            newList[i].push(lists[i * 2 + 1]);
+          }else {
+            newList[i].push({});
+          }
+        }
+        this.setData({
+          newsList: newList,
+          backgroundImg,
+          isOpen
+        })
+      }
+    })
+  },
+
+  linkToCoupon(event) {
+    let id = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url:'/pages/detail/detail?id=' + id
     })
   }
 })

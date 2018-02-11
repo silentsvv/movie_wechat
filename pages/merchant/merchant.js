@@ -5,14 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    shops: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let result = wx.getStorageSync('shops');
+    console.log(result);
+    if(result) {
+      this.setData({
+        shops: result
+      })
+    }
   },
 
   /**
@@ -43,24 +49,23 @@ Page({
   
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
+  openMap(event) {
+    let latitude = event.currentTarget.dataset.latitude;
+    let longitude = event.currentTarget.dataset.longitude;
+    let name = event.currentTarget.dataset.name;
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+    wx.openLocation({
+      latitude: parseFloat(latitude),
+      longitude: parseFloat(longitude),
+      scale: 28,
+      address: name
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
   
-  }
+  callPhone(event) {
+    let phone = event.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone //仅为示例，并非真实的电话号码
+    })
+  },
 })

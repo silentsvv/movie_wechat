@@ -1,52 +1,74 @@
 <!--pages/detail/detail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
 <view class="detail">
   <view class="detail__image">
-    <image src="../../images/goods.png"></image>
+    <image src="{{ImgUrl + coupon.imagePath}}"></image>
   </view>
   <view class="detail__info">
-    <view class="info__title">Apple Iphone X 64GB深灰空 移动互联电信4g手机</view>
-    <view class="info__price">
-      <text class="price">2500</text>
-      <text class="text">积分+199元</text>
+    <view class="info__title">{{coupon.name}}</view>
+    <view class="info__price" wx:if="{{coupon.type == 1}}">
+      <text class="text">面值</text>
+      <text class="price">{{coupon.price}}</text>
+      <text class="text">元</text>
+    </view>
+    <view class="info__price" wx:elif="{{coupon.type == 2}}">
+      <text class="price">{{coupon.integral}}</text>
+      <text class="text">积分</text>
+    </view>
+    <view class="info__price" wx:elif="{{coupon.type == 3}}">
+      <text class="text">面值</text>
+      <text class="price">{{coupon.price}}</text>
+      <text class="text">元</text>
+    </view>
+    <view class="info__price" wx:elif="{{coupon.type == 4}}">
+      <text class="price">{{coupon.integral}}</text>
+      <text class="text">积分+{{coupon.price}}元</text>
     </view>
     <view class="info__mes">
-      <text class="mes__market">市场参考价：599元</text>
-      <text class="mes__date">有效期2017.12.31</text>
+      <text class="mes__market" wx:if="{{coupon.type == 2 || coupon.type == 4}}">市场参考价：{{coupon.marketPrice}}元</text>
+      <text class="mes__market" wx:else></text>
+      <text class="mes__date">有效期{{coupon.deadline}}</text>
     </view>
   </view>
 
   <view class="detail__intro">
-    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
-    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
-    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
-    <view class="intro">卡卷类型： 积分/积分+现金卷</view>
+    <view class="intro" wx:if="{{coupon.type == 1}}">卡卷类型： 现金券</view>
+    <view class="intro" wx:if="{{coupon.type == 2}}">卡卷类型： 积分券</view>
+    <view class="intro" wx:if="{{coupon.type == 3}}">卡卷类型： 代金券</view>
+    <view class="intro" wx:if="{{coupon.type == 4}}">卡卷类型： 积分+现金券</view>
+    <view class="intro">行业： {{coupon.industryText}}</view>
+    <view class="intro">限制兑换： {{coupon.limit == 0?'不限': coupon.limit + '人/张'}}</view>
+    <view class="intro">适用等级： {{coupon.levelText}}</view>
   </view>
 
-  <view class="detail__merchant">
+  <view class="detail__merchant" wx:if="coupon.shops.length > 0">
     <view class="merchant__title border-bottom">适用门店</view>
     <view class="merchant__content border-bottom">
-      <view class="content__left">
-        <view class="left__title">飞扬影城(高德置地)</view>
-        <view class="left__address">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+      <view class="content__left" data-name="{{coupon.shops[0].name}}" data-latitude="{{coupon.shops[0].latitude}}" data-longitude="{{coupon.shops[0].longitude}}" bindtap="openMap">
+        <view class="left__title">{{coupon.shops[0].name}}</view>
+        <view class="left__address">{{coupon.shops[0].address}}</view>
       </view>
-      <view class="content__right">
+      <view class="content__right" data-phone="{{coupon.shops[0].hotline}}" bindtap="callPhone">
         <image src="../../images/telephone.png"></image>
       </view>
     </view>
-    <view class="content__total">查看全部门店</view>
+    <view class="content__total" bindtap="linkToMerchant">查看全部门店</view>
   </view>
 
   <view class="detail__seller">
     <view class="seller__title border-bottom">门店说明</view>
-    <view class="seller__content">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+    <view class="seller__content">{{coupon.shopInstruction}}</view>
   </view>
 
   <view class="detail__user">
     <view class="user__title border-bottom">使用说明</view>
-    <view class="user__content">天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号天河去珠江新城14号</view>
+    <view class="user__content">{{coupon.useInstruction}}</view>
   </view>
 
   <view class="detail__bottom">
-    <view class="bottom__title">点击查看图文详情</view>
+    <view class="bottom__title">图文详情</view>
+    <view class="bottom__text">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
   </view>
 </view>

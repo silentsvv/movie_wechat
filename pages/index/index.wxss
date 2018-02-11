@@ -1,7 +1,8 @@
 /**index.wxss**/
 .index {
-  height: 100%;
+  height: auto;
   background: #f5f5f5;
+  overflow: hidden;
 }
 
 .index .index__swiper {
@@ -12,16 +13,23 @@
   height: 340rpx;
 }
 
+.index .index__swiper image {
+  width: 100%;
+  object-fit: cover;
+}
+
 .index .index__ad {
+  position: relative;
   display: flex;
   height: 90rpx;
   align-items: center;
   background: #fff;
+  z-index: 2;
 }
 
 .index .index__ad .ad__left {
   padding-left: 30rpx;
-  width: 150rpx;
+  width: 160rpx;
   font-size: 38rpx;
   color: #ff4747;
 }
@@ -29,7 +37,26 @@
 .index .index__ad .ad__right {
   font-size: 26rpx;
   width: 550rpx;
+  line-height: 45rpx;
+  height: 90rpx;
   padding-left: 20rpx;
+}
+
+.ad__right__new {
+  width: 500rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.ad__bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 110rpx;
+  z-index: -1;
 }
 
 /* 卡卷列表 */
@@ -51,6 +78,10 @@
   padding: 0 10px;
   font-size: 32rpx;
   color: #999;
+}
+
+.tap.active {
+  color: #333!important;
 }
 
 .active::after {
@@ -93,13 +124,18 @@
 }
 
 .shop .shop__info .shop__info__price {
-  font-size: 30rpx;
+  font-size: 24rpx;
   color: #ff4747;
 }
 
 .shop__info__price .num {
-  font-size: 38rpx;
-  font-weight: 600;
+  font-size: 32rpx;
+}
+
+.shop__info__origin {
+  padding-top: 30rpx;
+  font-size: 24rpx;
+  color: #888;
 }
 
 .shop .shop__btn {
