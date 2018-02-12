@@ -114,5 +114,11 @@ Page({
     wx.navigateTo({
       url:'/pages/detail/detail?id=' + id
     })
+  },
+
+  linkToSearch() {
+    wx.navigateTo({
+      url:'/pages/search/search'
+    })
   }
 })

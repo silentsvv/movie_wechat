@@ -1,0 +1,108 @@
+/* pages/search/search.wxss */
+.search {
+  height: 100%;
+  background: #f5f5f5;
+}
+.wrap {
+  padding: 10rpx;
+  background: #fff;
+}
+.search .search__input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 620rpx;
+  height: 60rpx;
+  background: #f5f5f5;
+  border-radius: 60rpx;
+}
+
+.search .search__input__icon {
+  display: inline-flex;
+  margin-left: 10rpx;
+  width: 22px;
+  height: 21px;
+  align-items: center;
+  justify-content: center;
+}
+
+.search .search__input__icon image {
+  height: 60%;
+  width: 60%;
+}
+
+.search .search__input__value {
+  width: 580rpx;
+  font-size: 30rpx;
+}
+
+.search .search__input__btn {
+  position: absolute;
+  right: -110rpx;
+  width: 110rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.search__list {
+  height: 100%;
+  background: #f5f5f5;
+}
+
+
+.shop {
+  position: relative;
+  display: flex;
+  padding: 30rpx 0;
+  height: 160rpx;
+  background: #fff;
+}
+
+.shop::after {
+  content: '';
+  position: absolute;
+  bottom: 0rpx;
+  left: 30rpx;
+  width: 100%;
+  border-bottom: 1rpx solid #eee;
+}
+
+.shop .shop__img image {
+  padding-left: 30rpx;
+  padding-right: 30rpx; 
+  height: 160rpx;
+  width: 160rpx;
+}
+
+.shop .shop__info .shop__info__title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.shop .shop__info .shop__info__price {
+  font-size: 24rpx;
+  color: #ff4747;
+}
+
+.shop__info__price .num {
+  font-size: 32rpx;
+}
+
+.shop__info__origin {
+  padding-top: 30rpx;
+  font-size: 24rpx;
+  color: #888;
+}
+
+.shop .shop__btn {
+  position: absolute;
+  bottom: 20rpx;
+  right: 36rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding: 10rpx 30rpx;
+  background: #02a9ff;
+  border-radius: 40rpx;
+}

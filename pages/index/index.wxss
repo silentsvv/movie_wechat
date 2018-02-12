@@ -9,6 +9,39 @@
   height: 340rpx;
 }
 
+.index .index__search {
+  position: absolute;
+  top: 20rpx;
+  right: 30rpx;
+  display: flex;
+  align-items: center;
+  background: #f3f6f6;
+  width: 380rpx;
+  height: 42rpx;
+  border-radius: 42rpx;
+}
+
+.search__input__icon {
+  display: inline-flex;
+  width: 22px;
+  height: 21px;
+  align-items: center;
+  justify-content: center;
+}
+
+.search__input__icon image {
+  height: 60%;
+  width: 60%;
+}
+
+.search__input__value {
+  height: 42rpx;
+  width: 358rpx;
+  font-size: 22rpx;
+  line-height: 42rpx;
+  border: none;
+}
+
 .index .index__swiper .swiper {
   height: 340rpx;
 }
@@ -55,8 +88,9 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 110rpx;
+  height: 130rpx;
   z-index: -1;
+  background-size: 100%;
 }
 
 /* 卡卷列表 */

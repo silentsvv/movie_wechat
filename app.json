@@ -2,12 +2,13 @@
   "pages":[
     "pages/index/index",
     "pages/detail/detail",
-    "pages/merchant/merchant"
+    "pages/merchant/merchant",
+    "pages/search/search"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "云影汇",
     "navigationBarTextStyle":"black"
   }
 }

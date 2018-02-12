@@ -1,0 +1,30 @@
+<!--pages/search/search.wxml-->
+<view class="search">
+  <view class="wrap">
+    <view class="search__input">
+      <view class="search__input__icon">
+        <image src="../../images/search.png" alt=""></image>
+      </view>
+      <input class="search__input__value" type="text" placeholder="找卡券" bindinput="setSk"/>
+      <view class="search__input__btn" bindtap="submit">搜索</view> 
+    </view>
+  </view>
+  
+  <view class="search__list">
+    <view class="shop" wx:for="{{couponsList}}" data-id="{{item.id}}" bindtap="linkToCoupon">
+      <view class="shop__img" >
+        <image src="{{ImgUrl + item.imagePath}}"></image>
+      </view>
+      <view class="shop__info">
+        <view class="shop__info__title">
+          {{item.name}}
+        </view>
+        <view class="shop__info__price" wx:if="{{item.type == 1 || item.type == 3}}">面值<text class="num">{{item.price}}</text>元</view>
+        <view class="shop__info__price" wx:if="{{item.type == 2}}"><text class="num">{{item.integral}}</text>积分</view>
+        <view class="shop__info__price" wx:if="{{item.type == 4}}"><text class="num">{{item.integral}}</text>积分 + {{item.price}}元</view>
+        <view class="shop__info__origin" wx:if="{{item.type == 2 || item.type == 4}}">原价: {{item.marketPrice}}元</view>
+      </view>
+      <!-- <view class="shop__btn">领取</view> -->
+    </view>
+  </view>
+</view>

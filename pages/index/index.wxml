@@ -8,6 +8,12 @@
       </swiper-item>
     </block>
   </swiper>
+  <view class="index__search">
+    <view class="search__input__icon" bindtap="linkToSearch">
+      <image src="../../images/search.png" alt=""></image>
+    </view>
+    <input class="search__input__value" type="text" placeholder="找卡券" bindfocus="linkToSearch"/>
+  </view>
   <view class="index__ad">
     <view class="ad__left">最新动态</view>
     <swiper class="ad__right" 
