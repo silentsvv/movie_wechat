@@ -15,7 +15,7 @@
   right: 30rpx;
   display: flex;
   align-items: center;
-  background: #f3f6f6;
+  background: #fff;
   width: 380rpx;
   height: 42rpx;
   border-radius: 42rpx;
@@ -56,7 +56,7 @@
   display: flex;
   height: 90rpx;
   align-items: center;
-  background: #fff;
+  background: #bbb;
   z-index: 2;
 }
 
@@ -64,7 +64,7 @@
   padding-left: 30rpx;
   width: 160rpx;
   font-size: 38rpx;
-  color: #ff4747;
+  color: #fff;
 }
 
 .index .index__ad .ad__right {
@@ -88,7 +88,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 130rpx;
+  height: 140rpx;
   z-index: -1;
   background-size: 100%;
 }

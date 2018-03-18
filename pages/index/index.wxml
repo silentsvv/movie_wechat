@@ -14,8 +14,8 @@
     </view>
     <input class="search__input__value" type="text" placeholder="找卡券" bindfocus="linkToSearch"/>
   </view>
-  <view class="index__ad">
-    <view class="ad__left">最新动态</view>
+  <view class="index__ad" wx:if="{{isOpen == 1}}">
+    <view class="ad__left"  bindtap="linkToWeb">最新动态</view>
     <swiper class="ad__right" 
       indicator-dots="{{false}}"
       autoplay="{{true}}" 
@@ -25,8 +25,8 @@
       duration="{{1000}}">
       <block wx:for="{{newsList}}">
         <swiper-item>
-          <view class="ad__right__new">{{item[0].title}}</view>
-          <view class="ad__right__new">{{item[1].title}}</view>
+          <view class="ad__right__new" data-url="{{item[0].link}}" bindtap="linkToWeb">{{item[0].title}}</view>
+          <view class="ad__right__new" data-url="{{item[1].link}}" bindtap="linkToWeb">{{item[1].title}}</view>
         </swiper-item>
       </block>
     </swiper>
@@ -69,4 +69,5 @@
       </view>
     </view>
   </view>
+  <web-view src="{{srcLink}}" wx:if="{{srcLink != ''}}"></web-view>
 </view>

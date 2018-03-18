@@ -16,7 +16,8 @@ Page({
     duration: 1000,
     newsList: [],
     backgroundImg: '',
-    isOpen: ''
+    isOpen: '',
+    srcLink: ''
   },
 
   onLoad: function () {
@@ -106,6 +107,14 @@ Page({
           isOpen
         })
       }
+    })
+  },
+
+  linkToWeb(event) {
+    let url = event.currentTarget.dataset.url;
+    console.log(url);
+    this.setData({
+      srcLink: url
     })
   },
 
